@@ -1,0 +1,18 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+
+# Set up the figure and axis
+fig, ax = plt.subplots()
+x = np.linspace(0, 2 * np.pi, 200)
+line, = ax.plot(x, np.sin(x))
+
+# Animation function
+def animate(frame):
+    line.set_ydata(np.sin(x + 0.1 * frame))
+    return line,
+
+# Create the animation
+ani = FuncAnimation(fig, animate, frames=100, interval=50, blit=True)
+
+plt.show()
